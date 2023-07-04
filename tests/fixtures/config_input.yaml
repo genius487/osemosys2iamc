@@ -1,6 +1,6 @@
 model: OSeMBE v1.0.0
 scenario: DIAG-C400-lin-ResidualFossil
-region: 'iso3_start' #iso2_x, iso3_y, (where x and y are start, end, or a non-negative number), from_file, and other {country name} are the options for how region should be extracted
+region: 'iso2_start' #iso2_x, iso3_y, (where x and y are start, end, or a non-negative number), from_file, and other {country name} are the options for how region should be extracted
 inputs:
 - iamc_variable: 'Price|Primary Energy|Biomass'
   variable_cost: ['(?=^.{2}(BM))^.{6}(X0)']
