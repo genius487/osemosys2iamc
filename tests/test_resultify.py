@@ -40,9 +40,9 @@ class TestTrade:
         actual = calculate_trade(results, techs)
 
         expected_data = [
-            ['Austria',2014,  5.0],
-            ['Austria',2015, -5.0],
-            ['Austria',2016, -10.0],
+            ['AUSTRIA',2014,  5.0],
+            ['AUSTRIA',2015, -5.0],
+            ['AUSTRIA',2016, -10.0],
         ]
 
         expected = pd.DataFrame(expected_data, columns=['REGION', 'YEAR', 'VALUE'])
@@ -60,16 +60,16 @@ class TestEmissions:
         actual = filter_emission_tech(input_data, emission)
 
         data = [
-            ["Austria", 2026, -6244.862561],
-            ["Austria", 2027, -6529.532083],
-            ["Austria", 2030,  3043.148835],
-            ["Austria", 2031,  2189.064681],
-            ["Austria", 2032,  2315.821267],
-            ["Belgium", 2026, -2244.982800],
-            ["Belgium", 2027, -6746.886437],
-            ["Bulgaria", 2030, 11096.556931],
-            ["Bulgaria", 2031, 11069.257141],
-            ["Bulgaria", 2032, 11041.957354]
+            ["AUSTRIA", 2026, -6244.862561],
+            ["AUSTRIA", 2027, -6529.532083],
+            ["AUSTRIA", 2030,  3043.148835],
+            ["AUSTRIA", 2031,  2189.064681],
+            ["AUSTRIA", 2032,  2315.821267],
+            ["BELGIUM", 2026, -2244.982800],
+            ["BELGIUM", 2027, -6746.886437],
+            ["BULGARIA", 2030, 11096.556931],
+            ["BULGARIA", 2031, 11069.257141],
+            ["BULGARIA", 2032, 11041.957354]
         ]
 
         expected = pd.DataFrame(
@@ -88,10 +88,10 @@ class TestEmissions:
         actual = filter_emission_tech(input_data, emission, tech)
 
         data = [
-            ['Austria', 2026, -7573.069442598169],
-            ['Austria', 2027, -7766.777427515737],
-            ['Belgium', 2026, -2244.98280006968],
-            ['Belgium', 2027, -6746.886436926597],
+            ['AUSTRIA', 2026, -7573.069442598169],
+            ['AUSTRIA', 2027, -7766.777427515737],
+            ['BELGIUM', 2026, -2244.98280006968],
+            ['BELGIUM', 2027, -6746.886436926597],
         ]
 
         expected = pd.DataFrame(
@@ -134,24 +134,24 @@ class TestEnergy:
         actual = filter_capacity(input_data, technologies)
 
         data = [
-            ['Austria', 2015, 26.324108350683794],
-            ['Austria', 2016, 26.324108350683794],
-            ['Austria', 2017, 26.324108350683794],
-            ['Austria', 2018, 26.324108350683787],
-            ['Austria', 2019, 26.324108350683794],
-            ['Belgium', 2016, 141.0],
-            ['Bulgaria', 2015, 1.423512],
-            ['Switzerland', 2047, 69.9750212433476],
-            ['Switzerland', 2048, 91.45662886581975],
-            ['Switzerland', 2049, 76.86770297185006],
-            ['Switzerland', 2050, 70.86078033897608],
-            ['Switzerland', 2051, 53.88447040760964],
-            ['Czechia', 2015, 329.5950809],
-            ['Denmark', 2015, 0.0031536],
-            ['Estonia', 2015, 28.512108],
-            ['Spain', 2015, 26.75595496],
-            ['Finland', 2015, 0.296581102],
-            ['France', 2015, 72.25974846],
+            ['AUSTRIA', 2015, 26.324108350683794],
+            ['AUSTRIA', 2016, 26.324108350683794],
+            ['AUSTRIA', 2017, 26.324108350683794],
+            ['AUSTRIA', 2018, 26.324108350683787],
+            ['AUSTRIA', 2019, 26.324108350683794],
+            ['BELGIUM', 2016, 141.0],
+            ['BULGARIA', 2015, 1.423512],
+            ['SWITZERLAND', 2047, 69.9750212433476],
+            ['SWITZERLAND', 2048, 91.45662886581975],
+            ['SWITZERLAND', 2049, 76.86770297185006],
+            ['SWITZERLAND', 2050, 70.86078033897608],
+            ['SWITZERLAND', 2051, 53.88447040760964],
+            ['CZECHIA', 2015, 329.5950809],
+            ['DENMARK', 2015, 0.0031536],
+            ['ESTONIA', 2015, 28.512108],
+            ['SPAIN', 2015, 26.75595496],
+            ['FINLAND', 2015, 0.296581102],
+            ['FRANCE', 2015, 72.25974846],
         ]
 
         expected = pd.DataFrame(data=data, columns=["REGION", "YEAR","VALUE"])
@@ -166,11 +166,11 @@ class TestEnergy:
         actual = filter_capacity(input_data, technologies)
 
         data = [
-            ['Austria',2015,26.324108350683794],
-            ['Austria',2016,26.324108350683794],
-            ['Austria',2017,26.324108350683794],
-            ['Austria',2018,26.324108350683787],
-            ['Austria',2019,26.324108350683794],
+            ['AUSTRIA',2015,26.324108350683794],
+            ['AUSTRIA',2016,26.324108350683794],
+            ['AUSTRIA',2017,26.324108350683794],
+            ['AUSTRIA',2018,26.324108350683787],
+            ['AUSTRIA',2019,26.324108350683794],
         ]
 
         expected = pd.DataFrame(data=data, columns=["REGION", "YEAR","VALUE"])
@@ -185,11 +185,11 @@ class TestEnergy:
         actual = filter_capacity(input_data, technologies)
 
         data = [
-            ['Switzerland',2047,69.9750212433476],
-            ['Switzerland',2048,91.45662886581975],
-            ['Switzerland',2049,76.86770297185006],
-            ['Switzerland',2050,70.86078033897608],
-            ['Switzerland',2051,53.88447040760964],
+            ['SWITZERLAND',2047,69.9750212433476],
+            ['SWITZERLAND',2048,91.45662886581975],
+            ['SWITZERLAND',2049,76.86770297185006],
+            ['SWITZERLAND',2050,70.86078033897608],
+            ['SWITZERLAND',2051,53.88447040760964],
         ]
 
         expected = pd.DataFrame(data=data, columns=["REGION", "YEAR","VALUE"])
@@ -204,7 +204,7 @@ class TestEnergy:
         actual = filter_capacity(input_data, technologies)
 
         data = [
-            ['Belgium',2016,141.0],
+            ['BELGIUM',2016,141.0],
         ]
 
         expected = pd.DataFrame(data=data, columns=["REGION", "YEAR","VALUE"])
@@ -219,7 +219,7 @@ class TestEnergy:
         actual = filter_capacity(input_data, technologies)
 
         data = [
-            ['Bulgaria',2015,1.423512],
+            ['BULGARIA',2015,1.423512],
         ]
 
         expected = pd.DataFrame(data=data, columns=["REGION", "YEAR","VALUE"])
@@ -233,7 +233,7 @@ class TestEnergy:
         actual = filter_capacity(input_data, technologies)
 
         data = [
-            ['Czechia',2015,3.3637616987287244],
+            ['CZECHIA',2015,3.3637616987287244],
         ]
 
         expected = pd.DataFrame(data=data, columns=["REGION", "YEAR","VALUE"])
@@ -247,7 +247,7 @@ class TestEnergy:
         actual = filter_capacity(input_data, technologies)
 
         data = [
-            ['Czechia',2015,326.2313192401038],
+            ['CZECHIA',2015,326.2313192401038],
         ]
 
         expected = pd.DataFrame(data=data, columns=["REGION", "YEAR","VALUE"])
@@ -261,7 +261,7 @@ class TestEnergy:
         actual = filter_capacity(input_data, technologies)
 
         data = [
-            ['Denmark',2015,0.0031536000000000003],
+            ['DENMARK',2015,0.0031536000000000003],
         ]
 
         expected = pd.DataFrame(data=data, columns=["REGION", "YEAR","VALUE"])
@@ -276,7 +276,7 @@ class TestEnergy:
         actual = filter_capacity(input_data, technologies)
 
         data = [
-            ['Estonia',2015,28.512107999999998],
+            ['ESTONIA',2015,28.512107999999998],
         ]
 
         expected = pd.DataFrame(data=data, columns=["REGION", "YEAR","VALUE"])
@@ -291,7 +291,7 @@ class TestEnergy:
         actual = filter_capacity(input_data, technologies)
 
         data = [
-            ['Spain',2015,26.75595496070811],
+            ['SPAIN',2015,26.75595496070811],
         ]
 
         expected = pd.DataFrame(data=data, columns=["REGION", "YEAR","VALUE"])
@@ -306,8 +306,8 @@ class TestEnergy:
         actual = filter_capacity(input_data, technologies)
 
         data = [
-            ['Finland', 2015, 0.29658110158442175],
-            ['France', 2015, 72.25974845531343]
+            ['FINLAND', 2015, 0.29658110158442175],
+            ['FRANCE', 2015, 72.25974845531343]
         ]
 
         expected = pd.DataFrame(data=data, columns=["REGION", "YEAR","VALUE"])
@@ -322,11 +322,11 @@ class TestEnergy:
         actual = filter_capacity(input_data, technologies)
 
         data = [
-            ['Austria', 2042, 0.6636346353894057],
-            ['Austria', 2043, 1.3300518531620575],
-            ['Austria', 2044, 1.9992691432067637],
-            ['Austria', 2045, 2.6713041901899794],
-            ['Austria', 2046, 3.4778527409137996]
+            ['AUSTRIA', 2042, 0.6636346353894057],
+            ['AUSTRIA', 2043, 1.3300518531620575],
+            ['AUSTRIA', 2044, 1.9992691432067637],
+            ['AUSTRIA', 2045, 2.6713041901899794],
+            ['AUSTRIA', 2046, 3.4778527409137996]
         ]
 
         expected = pd.DataFrame(data=data, columns=["REGION", "YEAR","VALUE"])
@@ -341,8 +341,8 @@ class TestEnergy:
         actual = filter_final_energy(input_data, fuels)
 
         data = [
-            ['Austria',2015,227.5944502],
-            ['Belgium',2016,296.0570016],
+            ['AUSTRIA',2015,227.5944502],
+            ['BELGIUM',2016,296.0570016],
         ]
 
         expected = pd.DataFrame(data=data, columns=["REGION", "YEAR", "VALUE"])
@@ -370,18 +370,18 @@ class TestCapacity:
         actual = filter_capacity(input_data, technologies)
 
         data = [
-            ['Austria',2015,0.446776],
-            ['Belgium',2016,0.184866],
-            ['Bulgaria',2015,4.141],
-            ['Switzerland',2026,0.004563975391582646],
-            ['Cyprus',2015,0.3904880555817921],
-            ['Czechia',2015,0.299709],
-            ['Germany',2015,9.62143],
-            ['Denmark',2015,0.0005],
-            ['Estonia',2015,0.006],
-            ['Spain',2015,7.7308],
-            ['Finland',2015,0.0263],
-            ['France',2015,0.47835],
+            ['AUSTRIA',2015,0.446776],
+            ['BELGIUM',2016,0.184866],
+            ['BULGARIA',2015,4.141],
+            ['SWITZERLAND',2026,0.004563975391582646],
+            ['CYPRUS',2015,0.3904880555817921],
+            ['CZECHIA',2015,0.299709],
+            ['GERMANY',2015,9.62143],
+            ['DENMARK',2015,0.0005],
+            ['ESTONIA',2015,0.006],
+            ['SPAIN',2015,7.7308],
+            ['FINLAND',2015,0.0263],
+            ['FRANCE',2015,0.47835],
         ]
 
         expected = pd.DataFrame(data=data, columns=["REGION", "YEAR", "VALUE"])
@@ -399,9 +399,9 @@ class TestCapacity:
         actual = filter_capacity(input_data, technologies)
 
         data = [
-            ['Austria',2015,0.446776],
-            ['Belgium',2016,0.184866],
-            ['France', 2015, 0.47835],
+            ['AUSTRIA',2015,0.446776],
+            ['BELGIUM',2016,0.184866],
+            ['FRANCE', 2015, 0.47835],
         ]
 
         expected = pd.DataFrame(data=data, columns=["REGION", "YEAR", "VALUE"])
@@ -415,7 +415,7 @@ class TestCapacity:
         actual = filter_capacity(input_data, technologies)
 
         data = [
-            ['Bulgaria',2015,4.141],
+            ['BULGARIA',2015,4.141],
         ]
 
         expected = pd.DataFrame(data=data, columns=["REGION", "YEAR", "VALUE"])
@@ -429,7 +429,7 @@ class TestCapacity:
         actual = filter_capacity(input_data, technologies)
 
         data = [
-            ['Germany',2015,9.62143],
+            ['GERMANY',2015,9.62143],
         ]
 
         expected = pd.DataFrame(data=data, columns=["REGION", "YEAR", "VALUE"])
@@ -443,7 +443,7 @@ class TestCapacity:
         actual = filter_capacity(input_data, technologies)
 
         data = [
-            ['Switzerland',2026,0.004563975391582646],
+            ['SWITZERLAND',2026,0.004563975391582646],
         ]
 
         expected = pd.DataFrame(data=data, columns=["REGION", "YEAR", "VALUE"])
@@ -457,7 +457,7 @@ class TestCapacity:
         actual = filter_capacity(input_data, technologies)
 
         data = [
-            ['Czechia',2015,0.299709],
+            ['CZECHIA',2015,0.299709],
         ]
 
         expected = pd.DataFrame(data=data, columns=["REGION", "YEAR", "VALUE"])
@@ -471,7 +471,7 @@ class TestCapacity:
         actual = filter_capacity(input_data, technologies)
 
         data = [
-            ['Spain',2015,7.7308],
+            ['SPAIN',2015,7.7308],
         ]
 
         expected = pd.DataFrame(data=data, columns=["REGION", "YEAR", "VALUE"])
@@ -485,7 +485,7 @@ class TestCapacity:
         actual = filter_capacity(input_data, technologies)
 
         data = [
-            ['Denmark',2015,0.0005],
+            ['DENMARK',2015,0.0005],
         ]
 
         expected = pd.DataFrame(data=data, columns=["REGION", "YEAR", "VALUE"])
@@ -499,7 +499,7 @@ class TestCapacity:
         actual = filter_capacity(input_data, technologies)
 
         data = [
-            ['Cyprus',2015,0.3904880555817921],
+            ['CYPRUS',2015,0.3904880555817921],
         ]
 
         expected = pd.DataFrame(data=data, columns=["REGION", "YEAR", "VALUE"])
@@ -513,7 +513,7 @@ class TestCapacity:
         actual = filter_capacity(input_data, technologies)
 
         data = [
-            ['Estonia',2015,0.006],
+            ['ESTONIA',2015,0.006],
         ]
 
         expected = pd.DataFrame(data=data, columns=["REGION", "YEAR", "VALUE"])
@@ -527,7 +527,7 @@ class TestCapacity:
         actual = filter_capacity(input_data, technologies)
 
         data = [
-            ['Finland',2015,0.0263],
+            ['FINLAND',2015,0.0263],
         ]
 
         expected = pd.DataFrame(data=data, columns=["REGION", "YEAR", "VALUE"])
@@ -543,10 +543,32 @@ class TestPrice:
         actual = filter_capacity(input_data, commodity)
 
         data = [
-            ['Austria',2015,3.0],
-            ['Austria',2016,4.0],
-            ['Belgium',2015,1.7],
-            ['Belgium',2016,1.8],
+            ['AUSTRIA',2015,3.0],
+            ['AUSTRIA',2016,4.0],
+            ['BELGIUM',2015,1.7],
+            ['BELGIUM',2016,1.8],
+        ]
+
+        expected = pd.DataFrame(data=data, columns=["REGION", "YEAR", "VALUE"])
+
+        print(actual)
+        print(expected)
+
+        pd.testing.assert_frame_equal(actual, expected)
+
+class TestCountryConversion:
+
+    def test_price_bm(self):
+        folderpath = os.path.join("tests","fixtures")
+        input_data = read_file(folderpath, "VariableCost", "iso2_start")
+        commodity = ['(?=^.{2}(BM))^.{6}(X0)']
+        actual = filter_capacity(input_data, commodity)
+
+        data = [
+            ['Ausdnfyhstria',2015,3.0],
+            ['Ausbhfgttria',2016,4.0],
+            ['Belgtgfbtjbium',2015,1.7],
+            ['Belgfsyhserdtium',2016,1.8],
         ]
 
         expected = pd.DataFrame(data=data, columns=["REGION", "YEAR", "VALUE"])
