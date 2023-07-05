@@ -216,10 +216,6 @@ def filter_capacity(df: pd.DataFrame, technologies: List[str]) -> pd.DataFrame:
 def filter_final_energy(df: pd.DataFrame, fuels: List) -> pd.DataFrame:
     """Return dataframe that indicate the final energy demand/use per country and year.
     """
-    #for f in fuels:
-    #    if len(f)!=2:
-    #        print("Fuel %s from config.yaml doesn't comply with expected format." % f)
-    #        exit(1)
 
     df_f = filter_fuels(df, fuels)
 
