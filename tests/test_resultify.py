@@ -550,22 +550,44 @@ class TestPrice:
 
 class TestCountryConversion:
 
-    def test_price_bm(self):
-        folderpath = os.path.join("tests","fixtures")
-        input_data = read_file(folderpath, "VariableCost", "iso2_start")
-        commodity = ['(?=^.{2}(BM))^.{6}(X0)']
-        actual = filter_capacity(input_data, commodity)
+    def test_iso_to_country_iso2start(self):
+        techs = ['NGNGA2', 'DENGA2', 'NGKENGX']
 
-        data = [
-            ['Ausdnfyhstria',2015,3.0],
-            ['Ausbhfgttria',2016,4.0],
-            ['Belgtgfbtjbium',2015,1.7],
-            ['Belgfsyhserdtium',2016,1.8],
-        ]
+        actual = iso2country('iso2-start', techs, 'TotalCapacityAnnual')
 
-        expected = pd.DataFrame(data=data, columns=["REGION", "YEAR", "VALUE"])
+        expected = ['NIGERIA', 'GERMANY', 'NIGERIA']
 
-        print(actual)
-        print(expected)
+        assert actual == expected
 
-        pd.testing.assert_frame_equal(actual, expected)
+    def test_iso_to_country_iso3start(self):
+        techs = ['NGANGA', 'BHSHYA', 'TCASOA']
+
+        actual = iso2country('iso3-start', techs, 'TotalCapacityAnnual')
+
+        expected = ['NIGERIA', 'BAHAMAS', 'TURKS AND CAICOS ISLANDS']
+
+        assert actual == expected
+      
+#         folderpath = os.path.join("tests","fixtures")
+#         input_data = read_file(folderpath, "VariableCost", "iso2_start")
+#         commodity = ['(?=^.{2}(BM))^.{6}(X0)']
+#         actual = filter_capacity(input_data, commodity)
+
+#         data = [
+#             ['Ausdnfyhstria',2015,3.0],
+#             ['Ausbhfgttria',2016,4.0],
+#             ['Belgtgfbtjbium',2015,1.7],
+#             ['Belgfsyhserdtium',2016,1.8],
+#         ]
+
+
+# ZXNGA - country code does not exist natural gas technology
+# 'strat', 'ned' - misspelt arguments should raise a ValueError()
+# -1, 22 - position number negative or larger than string should raise a ValueError()
+
+#         expected = pd.DataFrame(data=data, columns=["REGION", "YEAR", "VALUE"])
+
+#         print(actual)
+#         print(expected)
+
+#         pd.testing.assert_frame_equal(actual, expected)
