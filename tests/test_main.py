@@ -43,7 +43,7 @@ def test_main_result():
         ['BELGIUM','Capacity|Electricity',2016,0.184866],
         ['BULGARIA','Capacity|Electricity',2015,4.141],
         ['CYPRUS','Capacity|Electricity',2015,0.3904880555817921],
-        ['CZECH REPUBLIC','Capacity|Electricity',2015,0.299709],
+        ['CZECHIA','Capacity|Electricity',2015,0.299709],
         ['DENMARK','Capacity|Electricity',2015,0.0005],
         ['ESTONIA','Capacity|Electricity',2015,0.006],
         ['FINLAND','Capacity|Electricity',2015,0.0263],
