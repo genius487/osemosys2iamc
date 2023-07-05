@@ -26,7 +26,7 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import re
 
-def iso2country(iso_format: str, index: List[str], osemosys_param: str):
+def iso_to_country(iso_format: str, index: List[str], osemosys_param: str):
     """Reads in selected CSV file and applies chosen region
     naming convention as given in the config file into a Pandas DataFrame
 
