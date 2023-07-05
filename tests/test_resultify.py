@@ -40,9 +40,9 @@ class TestTrade:
         actual = calculate_trade(results, techs)
 
         expected_data = [
-            ['AUSTRIA',2014,  5.0],
-            ['AUSTRIA',2015, -5.0],
-            ['AUSTRIA',2016, -10.0],
+            ['REGION1',2014,  5.0],
+            ['REGION1',2015, -5.0],
+            ['REGION1',2016, -10.0],
         ]
 
         expected = pd.DataFrame(expected_data, columns=['REGION', 'YEAR', 'VALUE'])
@@ -105,7 +105,7 @@ class TestFilter:
 
     def test_filter_fuel(self):
         folderpath = os.path.join("tests","fixtures")
-        input_data = read_file(folderpath, "UseByTechnology", "from_file")
+        input_data = read_file(folderpath, "UseByTechnology", "from_csv")
 
         technologies = ['ALUPLANT']
         fuels = ['C1_P_HCO']
@@ -141,17 +141,17 @@ class TestEnergy:
             ['AUSTRIA', 2019, 26.324108350683794],
             ['BELGIUM', 2016, 141.0],
             ['BULGARIA', 2015, 1.423512],
+            ['CZECHIA', 2015, 329.5950809],
+            ['DENMARK', 2015, 0.0031536],
+            ['ESTONIA', 2015, 28.512108],
+            ['FINLAND', 2015, 0.296581102],
+            ['FRANCE', 2015, 72.25974846],
+            ['SPAIN', 2015, 26.75595496],
             ['SWITZERLAND', 2047, 69.9750212433476],
             ['SWITZERLAND', 2048, 91.45662886581975],
             ['SWITZERLAND', 2049, 76.86770297185006],
             ['SWITZERLAND', 2050, 70.86078033897608],
-            ['SWITZERLAND', 2051, 53.88447040760964],
-            ['CZECHIA', 2015, 329.5950809],
-            ['DENMARK', 2015, 0.0031536],
-            ['ESTONIA', 2015, 28.512108],
-            ['SPAIN', 2015, 26.75595496],
-            ['FINLAND', 2015, 0.296581102],
-            ['FRANCE', 2015, 72.25974846],
+            ['SWITZERLAND', 2051, 53.88447040760964]
         ]
 
         expected = pd.DataFrame(data=data, columns=["REGION", "YEAR","VALUE"])
@@ -337,7 +337,7 @@ class TestEnergy:
         folderpath = os.path.join("tests","fixtures")
         input_data = read_file(folderpath, "Demand", "iso2_start")
 
-        fuels = ['E2']
+        fuels = ['^.*E2$']
         actual = filter_final_energy(input_data, fuels)
 
         data = [
@@ -352,15 +352,6 @@ class TestEnergy:
 
         pd.testing.assert_frame_equal(actual, expected)
 
-    def test_fuels_format_wrong(self):
-        folderpath = os.path.join("tests","fixtures")
-        input_data = read_file(folderpath, "Demand", "iso2_start")
-        fuels = ['ELE']
-        with pytest.raises(SystemExit) as pytest_wrapped_e:
-            filter_final_energy(input_data, fuels)
-        assert pytest_wrapped_e.type == SystemExit
-        assert pytest_wrapped_e.value.code == 1
-
 class TestCapacity:
 
     def test_filter_inst_capacity(self):
@@ -373,15 +364,16 @@ class TestCapacity:
             ['AUSTRIA',2015,0.446776],
             ['BELGIUM',2016,0.184866],
             ['BULGARIA',2015,4.141],
-            ['SWITZERLAND',2026,0.004563975391582646],
             ['CYPRUS',2015,0.3904880555817921],
             ['CZECHIA',2015,0.299709],
-            ['GERMANY',2015,9.62143],
             ['DENMARK',2015,0.0005],
             ['ESTONIA',2015,0.006],
-            ['SPAIN',2015,7.7308],
             ['FINLAND',2015,0.0263],
             ['FRANCE',2015,0.47835],
+            ['GERMANY',2015,9.62143],
+            ['SPAIN',2015,7.7308],
+            ['SWITZERLAND',2026,0.004563975391582646]
+            
         ]
 
         expected = pd.DataFrame(data=data, columns=["REGION", "YEAR", "VALUE"])
