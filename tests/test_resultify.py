@@ -568,7 +568,7 @@ class TestCountryConversion:
 
         assert actual == expected
 
-  def test_iso_to_country_iso2end(self):
+    def test_iso_to_country_iso2end(self):
         techs = ['NGA2NG', 'NGA2DE', 'KENGXNG', 'NGAZX']
 
         actual = iso_to_country('iso2_start', techs, 'TotalCapacityAnnual')
