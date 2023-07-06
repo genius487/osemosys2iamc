@@ -45,13 +45,14 @@ def iso_to_country(iso_format: str, index: List[str], osemosys_param: str):
     """
     countries_list = []
     no_country_extracted = []
-    format_regex = r'^iso([23])_([1-9]\d*|start|end)$'
+    format_regex = r'^iso[23]_([1-9]\d*|start|end)$'
 
     # Verifies that given format is the expected format; Raises an error if expectation not met
     if re.search(format_regex, iso_format) != None:
 
         iso_type, abbr_loc = iso_format[3:].split('_')
 
+        # Assigns the correct dictionary to search based on iso type
         if iso_type == '2':
             country_dict = countries_by_alpha2
         elif iso_type == '3':
@@ -118,6 +119,11 @@ def read_file(path: str, osemosys_param: str, region_name_option: str) -> pd.Dat
     filename = os.path.join(path, osemosys_param + '.csv')
     df = pd.read_csv(filename)
 
+    """
+    Returns list of countries to REGION column based on option defined by the user
+    Anything other than a valid iso format or 'from_csv' will be accepted as the 
+    intended name of the region
+    """
     if 'iso' in region_name_option:
         if 'FUEL' in df.columns:
             df['REGION'] = iso_to_country(region_name_option, df['FUEL'], osemosys_param)
