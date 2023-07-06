@@ -571,7 +571,7 @@ class TestCountryConversion:
     def test_iso_to_country_iso2end(self):
         techs = ['NGA2NG', 'NGA2DE', 'KENGXNG', 'NGAZX']
 
-        actual = iso_to_country('iso2_start', techs, 'TotalCapacityAnnual')
+        actual = iso_to_country('iso2_end', techs, 'TotalCapacityAnnual')
 
         expected = ['NIGERIA', 'GERMANY', 'NIGERIA', '']
 
@@ -580,7 +580,7 @@ class TestCountryConversion:
     def test_iso_to_country_iso3end(self):
         techs = ['NGANGA', 'HYABHS', 'SOATCA', 'NGAZX']
 
-        actual = iso_to_country('iso3_start', techs, 'TotalCapacityAnnual')
+        actual = iso_to_country('iso3_end', techs, 'TotalCapacityAnnual')
 
         expected = ['NIGERIA', 'BAHAMAS', 'TURKS AND CAICOS ISLANDS', '']
 
