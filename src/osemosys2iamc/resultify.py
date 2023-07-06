@@ -96,6 +96,7 @@ def iso_to_country(iso_format: str, index: List[str], osemosys_param: str):
         print(f'Countries were not found from the following technologies/fuels: {set(no_country_extracted)}')
         print(f'Kindly check your region naming option or the technology/fuel names in file: {osemosys_param}.\n')
                     
+    print(countries_list)
     return countries_list
 
 def read_file(path: str, osemosys_param: str, region_name_option: str) -> pd.DataFrame:
@@ -124,15 +125,20 @@ def read_file(path: str, osemosys_param: str, region_name_option: str) -> pd.Dat
     Anything other than a valid iso format or 'from_csv' will be accepted as the 
     intended name of the region
     """
+    print(osemosys_param)
     if 'iso' in region_name_option:
         if 'FUEL' in df.columns:
             df['REGION'] = iso_to_country(region_name_option, df['FUEL'], osemosys_param)
         elif 'TECHNOLOGY' in df.columns:
             df['REGION'] = iso_to_country(region_name_option, df['TECHNOLOGY'], osemosys_param)
+        elif 'EMISSION' in df.columns:
+            df['REGION'] = iso_to_country(region_name_option, df['EMISSION'], osemosys_param)
     elif region_name_option == 'from_csv':
         df['REGION'] = df['REGION']
     else:
         df['REGION'] = region_name_option
+
+    print(df['REGION'])
 
     return df
 
