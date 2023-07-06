@@ -8,7 +8,7 @@ from osemosys2iamc.resultify import (filter_technology_fuel,
                                      filter_capacity,
                                      calculate_trade,
                                      read_file,
-                                     iso2country)
+                                     iso_to_country)
 
 
 class TestTrade:
@@ -551,43 +551,55 @@ class TestPrice:
 class TestCountryConversion:
 
     def test_iso_to_country_iso2start(self):
-        techs = ['NGNGA2', 'DENGA2', 'NGKENGX']
+        techs = ['NGNGA2', 'DENGA2', 'NGKENGX', 'ZXNGA']
 
-        actual = iso2country('iso2-start', techs, 'TotalCapacityAnnual')
+        actual = iso_to_country('iso2_start', techs, 'TotalCapacityAnnual')
 
-        expected = ['NIGERIA', 'GERMANY', 'NIGERIA']
+        expected = ['NIGERIA', 'GERMANY', 'NIGERIA', '']
 
         assert actual == expected
 
     def test_iso_to_country_iso3start(self):
-        techs = ['NGANGA', 'BHSHYA', 'TCASOA']
+        techs = ['NGANGA', 'BHSHYA', 'TCASOA', 'ZXNGA']
 
-        actual = iso2country('iso3-start', techs, 'TotalCapacityAnnual')
+        actual = iso_to_country('iso3_start', techs, 'TotalCapacityAnnual')
 
-        expected = ['NIGERIA', 'BAHAMAS', 'TURKS AND CAICOS ISLANDS']
+        expected = ['NIGERIA', 'BAHAMAS', 'TURKS AND CAICOS ISLANDS', '']
 
         assert actual == expected
-      
-#         folderpath = os.path.join("tests","fixtures")
-#         input_data = read_file(folderpath, "VariableCost", "iso2_start")
-#         commodity = ['(?=^.{2}(BM))^.{6}(X0)']
-#         actual = filter_capacity(input_data, commodity)
 
-#         data = [
-#             ['Ausdnfyhstria',2015,3.0],
-#             ['Ausbhfgttria',2016,4.0],
-#             ['Belgtgfbtjbium',2015,1.7],
-#             ['Belgfsyhserdtium',2016,1.8],
-#         ]
+  def test_iso_to_country_iso2end(self):
+        techs = ['NGA2NG', 'NGA2DE', 'KENGXNG', 'NGAZX']
 
+        actual = iso_to_country('iso2_start', techs, 'TotalCapacityAnnual')
 
-# ZXNGA - country code does not exist natural gas technology
-# 'strat', 'ned' - misspelt arguments should raise a ValueError()
-# -1, 22 - position number negative or larger than string should raise a ValueError()
+        expected = ['NIGERIA', 'GERMANY', 'NIGERIA', '']
 
-#         expected = pd.DataFrame(data=data, columns=["REGION", "YEAR", "VALUE"])
+        assert actual == expected
 
-#         print(actual)
-#         print(expected)
+    def test_iso_to_country_iso3end(self):
+        techs = ['NGANGA', 'HYABHS', 'SOATCA', 'NGAZX']
 
-#         pd.testing.assert_frame_equal(actual, expected)
+        actual = iso_to_country('iso3_start', techs, 'TotalCapacityAnnual')
+
+        expected = ['NIGERIA', 'BAHAMAS', 'TURKS AND CAICOS ISLANDS', '']
+
+        assert actual == expected
+
+    def test_iso_to_country_iso2middle(self):
+        techs = ['NGA2NGZZ', 'NGA2DEVV', 'NGAZXVV', 'CZF']
+
+        actual = iso_to_country('iso2_5', techs, 'TotalCapacityAnnual')
+
+        expected = ['NIGERIA', 'GERMANY', '', '']
+
+        assert actual == expected
+
+    def test_iso_to_country_iso3middle(self):
+        techs = ['NGANGAGHAPP', 'HYABHSLCA', 'ABWBMUABC', 'NGAZX']
+
+        actual = iso_to_country('iso3_7', techs, 'TotalCapacityAnnual')
+
+        expected = ['GHANA', 'SAINT LUCIA', '', '']
+
+        assert actual == expected
