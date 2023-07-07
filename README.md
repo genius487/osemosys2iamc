@@ -60,17 +60,19 @@ Write a configuration file in YAML format. A simple configuration file with two 
 The first section of the configuration file with the keys `model`, `scenario`, and `region` are used to define the metadata for
 the IAMC template. 
 
-`model` and `scenario` are user-defined, taking any string and having no set format.
+`model` and `scenario` are user-defined, taking any word or phrase and having no set format. `region` may be defined using 4 methods:  
 
-`region` may be defined in 4 methods:
-    ukjn
-    kjb
-    jbk 
-    hjb l
+* `iso2_x` - using the ISO 3166-1 alpha-2 country codes located in the names of technologies/fuels/emissions (depending on the file) at the location given by the user.\*
+* `iso3_x` - using the ISO 3166-1 alpha-3 country codes located in the names of technologies/fuels/emissions (depending on the file) at the location given by the user.\*
+* `from_csv` - using the region as defined in the REGION column of the CSV file  
+* Any other word or phrase the user defines (other than an invalid iso option) will be used as the region for all variables. eg. Austria, Nepal, Ethiopia, Guyana, etc.
 
-Add some stuff here about region names
+\*The `x` in the above ISO options is to be replaced by:
+* `start`, if the codes are at the beginning of the names
+* `end`, if the codes are at the end of the names, or
+* a positive number indicating the position of the first letter of the code in the name. eg. iso2_5 will target the 'GH' in 'POWRGHSOL' 
 
-The second and third sections, `inputs` and `results:` is where you describe each of the IAMC variables and provide instructions to osemosys2iamc on how
+The second section, `results`, is where you describe each of the IAMC variables and provide instructions to osemosys2iamc on how
 to compute the values.
 
 `iamc_variable` - this should match one of the IAMC variable names  
