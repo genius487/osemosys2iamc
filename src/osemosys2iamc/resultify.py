@@ -96,7 +96,6 @@ def iso_to_country(iso_format: str, index: List[str], osemosys_param: str):
         print(f'Countries were not found from the following technologies/fuels: {set(no_country_extracted)}')
         print(f'Kindly check your region naming option or the technology/fuel names in file: {osemosys_param}.\n')
                     
-    print(countries_list)
     return countries_list
 
 def read_file(path: str, osemosys_param: str, region_name_option: str) -> pd.DataFrame:
@@ -125,7 +124,6 @@ def read_file(path: str, osemosys_param: str, region_name_option: str) -> pd.Dat
     Anything other than a valid iso format or 'from_csv' will be accepted as the 
     intended name of the region
     """
-    print(osemosys_param)
     if 'iso' in region_name_option:
         if 'FUEL' in df.columns:
             df['REGION'] = iso_to_country(region_name_option, df['FUEL'], osemosys_param)
@@ -137,8 +135,6 @@ def read_file(path: str, osemosys_param: str, region_name_option: str) -> pd.Dat
         df['REGION'] = df['REGION']
     else:
         df['REGION'] = region_name_option
-
-    print(df['REGION'])
 
     return df
 
@@ -231,11 +227,6 @@ def filter_capacity(df: pd.DataFrame, technologies: List[str]) -> pd.DataFrame:
 def filter_final_energy(df: pd.DataFrame, fuels: List) -> pd.DataFrame:
     """Return dataframe that indicate the final energy demand/use per country and year.
     """
-    #for f in fuels:
-    #    if len(f)!=2:
-    #        print("Fuel %s from config.yaml doesn't comply with expected format." % f)
-    #        exit(1)
-
     df_f = filter_fuels(df, fuels)
 
     df = df_f.groupby(by=['REGION','YEAR'], as_index=False)["VALUE"].sum()
