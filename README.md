@@ -44,7 +44,7 @@ Write a configuration file in YAML format. A simple configuration file with two 
 
     model: OSeMBE v1.0.0
     scenario: DIAG-C400-lin-ResidualFossil
-    region: iso2_x, iso3_x, (where x is start, end, or a positive number) from_csv, or
+    region: iso2_x, iso3_x, from_csv, or a name of a country/region [substitute x with start, end, or a positive number]
     results:
     - iamc_variable: 'Carbon Capture|Biomass'
       tech_emi: ['(?=^.{2}(BM))^.{4}(CS)']
