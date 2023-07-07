@@ -40,25 +40,37 @@ for more information about the format and its usage in that project.
 
 ## Writing a configuration file
 
-Write a configuration file in YAML format. A simple configuration file with one result variable looks like this:
+Write a configuration file in YAML format. A simple configuration file with two result variables looks like this:
 
     model: OSeMBE v1.0.0
     scenario: DIAG-C400-lin-ResidualFossil
-    region: ['Austria']  # select countries to plot summary results
+    region: iso2_x, iso3_x, (where x is start, end, or a positive number) from_csv, or
     results:
     - iamc_variable: 'Carbon Capture|Biomass'
       tech_emi: ['(?=^.{2}(BM))^.{4}(CS)']
       emissions: [CO2]
       unit: kt CO2/yr
       transform: abs
-    osemosys_param: AnnualTechnologyEmission
+      osemosys_param: AnnualTechnologyEmission
+    - iamc_variable: 'Capital Investment'
+      capacity: ['^.*$']
+      unit: MUSD
+      osemosys_param: CapitalInvestment
 
 The first section of the configuration file with the keys `model`, `scenario`, and `region` are used to define the metadata for
 the IAMC template. 
 
+`model` and `scenario` are user-defined, taking any string and having no set format.
+
+`region` may be defined in 4 methods:
+    ukjn
+    kjb
+    jbk 
+    hjb l
+
 Add some stuff here about region names
 
-The second section `results:` is where you describe each of the IAMC variables and provide instructions to osemosys2iamc on how
+The second and third sections, `inputs` and `results:` is where you describe each of the IAMC variables and provide instructions to osemosys2iamc on how
 to compute the values.
 
 `iamc_variable` - this should match one of the IAMC variable names  
