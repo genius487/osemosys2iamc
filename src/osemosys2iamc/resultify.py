@@ -93,7 +93,7 @@ def iso_to_country(iso_format: str, index: List[str], osemosys_param: str):
     the user so the program is not halt and continues normally
     """
     if len(no_country_extracted) > 0:
-        print(f'Countries were not found from the following technologies/fuels: {set(no_country_extracted)}')
+        print(f'Using the ISO option, Countries were not found from the following technologies/fuels: {set(no_country_extracted)}')
         print(f'Kindly check your region naming option or the technology/fuel names in file: {osemosys_param}.\n')
                     
     return countries_list
